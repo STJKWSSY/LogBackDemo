@@ -1,0 +1,21 @@
+<configuration>   
+ 
+  <!-- appender负责打印日志 -->
+   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+       <!-- encoder 默认配置为patternLayOutEncoder -->
+       <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+       </encoder>
+   </appender>
+   
+   <!-- LogBackDemo是java类，没有设置additivity,将此logger的打印信息向上级传递 -->
+   《<!-- 没有设置appender,此logger本身不打印任何信息 -->
+   <logger name="LogBackDemo" />
+   
+     
+ <!-- root是所有logger的根节点，只有level属性，name默认是root -->
+  <root level="DEBUG">             
+    <appender-ref ref="STDOUT" />   
+  </root>     
+ 
+ </configuration>
