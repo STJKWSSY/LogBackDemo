@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<servlet> 
+    <servlet-name>ViewStatusMessages</servlet-name> 
+        <servlet-class>ch.qos.logback.classic.ViewStatusMessagesServlet</servlet-class> 
+</servlet> 
+ 
+<servlet-mapping>
+    <servlet-name>ViewStatusMessages</servlet-name>  
+      <url-pattern>/lbClassicStatus</url-pattern> 
+</servlet-mapping>
+
+<!-- 可以在 WEB-INF/web.xml 里添加如下内容：  -->
+<!-- 访问地址是 http://host/yourWebapp/lbClassicStatus -->

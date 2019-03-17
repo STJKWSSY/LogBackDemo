@@ -1,21 +1,21 @@
-<configuration>   
- 
-  <!-- appender负责打印日志 -->
-   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-       <!-- encoder 默认配置为patternLayOutEncoder -->
-       <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
-       </encoder>
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  debug="true" scan="true" scanPeriod="30 seconds">
+   <!-- 采用时间戳可以记录不同的文件名  -->
+  <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss" /> 
+   <appender name="FILE" class="ch.qos.logback.core.FileAppender"> 
+       <append>true</append>
+       <file>src/main/java/log-${bySecond}.txt</file>
+        <encoder>   
+            <pattern>%logger{35} - %msg%n</pattern>
+        </encoder>
    </appender>
    
-   <!-- LogBackDemo是java类，没有设置additivity,将此logger的打印信息向上级传递 -->
-   《<!-- 没有设置appender,此logger本身不打印任何信息 -->
-   <logger name="LogBackDemo" />
-   
-     
- <!-- root是所有logger的根节点，只有level属性，name默认是root -->
-  <root level="DEBUG">             
-    <appender-ref ref="STDOUT" />   
-  </root>     
- 
- </configuration>
+   <root levle="debug">
+      <appender-ref ref="FILE"></appender-ref>
+   </root>
+</configuration>
+
+<!-- append:true:事件追加到现存文件尾部 ，false:清空现存文件，默认为:true-->
+<!-- ecoder:决定把时间写入到底层OutputStreamAppender的方式 -->
+<!-- file:文件名,如果不存在,则会创建,没有默认值，如果文件的父目录不存在,FileAppender会自动创建各级不存在的目录 -->
+<!-- timestamp:key:时候变量名，对于下的配置元素可用,属性datePattern表示当前时间(解析配置文件的时间)，转换成字符串使用的日期模式 -->

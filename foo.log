@@ -1,0 +1,4 @@
+2019-03-17 16:02:24,966 DEBUG [main] c.j.L.Foo [Foo.java : 14] ======DeBugAtFooClass
+2019-03-17 16:02:45,802 INFO [main] c.j.L.BasicConfiguration [BasicConfiguration.java : 13] Entering application.
+2019-03-17 16:02:45,808 DEBUG [main] c.j.L.Foo [Foo.java : 10] Did it again!
+2019-03-17 16:02:45,808 INFO [main] c.j.L.BasicConfiguration [BasicConfiguration.java : 16] Exiting application.

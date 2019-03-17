@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  debug="true" scan="true" scanPeriod="30 seconds">
+ 
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+      <encoder>    
+           <pattern>%msg%n</pattern>  
+       </encoder>  
+ </appender>
+ 
+ <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>D:\foo.log</file>
+     <encoder>    
+             <Pattern>%date %level [%thread] %logger{10} [%file : %line] %msg%n       </Pattern> 
+     </encoder>  
+</appender>
+ 
+ <!-- LogBack包 -->
+ <logger name="com.jiangNan.LogBack" level="INFO">
+     <appender-ref ref="FILE" />
+ </logger>
+ 
+ <!-- Foo类 -->
+ <!-- additivity:false,否认继承，不会发送到跟高级别的logger -->
+ <logger name="com.jiangNan.LogBack.Foo" level="DEBUG" additivity="false">
+     <appender-ref ref="STDOUT" />
+ </logger>
+  
+  <root level="OFF">
+      <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
+
+<!-- appender有叠加性   -->

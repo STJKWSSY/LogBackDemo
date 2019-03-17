@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  debug="true" scan="true" scanPeriod="30 seconds">
+ <!--debug="true" 默认读取logback内部信息 -->
+ <!-- scan="true",自动重新加载,logback-classic会自动扫描配置文件的变化，并且重新配置 -->
+ <!-- 默认情况下，每隔一分钟扫描一次(没带单位，默认毫秒),scanPeriod控制扫描周期，其值可以带时间单位[milliseconds,seconds,minutes,hours] -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+      <encoder>    
+           <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>  
+       </encoder>  
+ </appender>
+ 
+ <!-- LogBack包 -->
+ <logger name="com.jiangNan.LogBack" level="INFO">
+     <appender-ref ref="STDOUT" />
+ </logger>
+ 
+  <root level="OFF">
+      <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
+
+<!-- 基本选择规则依赖于调用的logger的有效级别，而不是分配级别，如果记录语句式启用的.则会调用logger里面的apender，无视logger的等级   -->
+
+<!--   			分配级别                 有效级别           -->
+<!-- root       debug  		  debug					-->
+<!-- LogBack    info  		  info					-->
+<!-- BasicClass null  		  info					-->
+<!-- FooClass   null  		  info					-->
